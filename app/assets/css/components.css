@@ -1,0 +1,282 @@
+/* ------------------------------------------------------------------
+   Shared layout primitives and small components.
+   Bigger components keep their styles in their .vue files.
+   ------------------------------------------------------------------ */
+
+/* Containers ------------------------------------------------------ */
+.wrap {
+  width: min(100% - 2 * var(--gutter), var(--wrap));
+  margin-inline: auto;
+}
+
+.wrap--narrow {
+  width: min(100% - 2 * var(--gutter), var(--wrap-narrow));
+  margin-inline: auto;
+}
+
+.measure {
+  max-width: var(--measure);
+}
+
+/* Sections -------------------------------------------------------- */
+.section {
+  padding-block: var(--section);
+}
+
+.section--tight {
+  padding-block: calc(var(--section) * 0.6);
+}
+
+.section + .section {
+  padding-top: 0;
+}
+
+.section-head {
+  margin-bottom: var(--sp-5);
+}
+
+.section-head > p {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-2);
+  max-width: var(--measure);
+}
+
+/* Lead paragraph -------------------------------------------------- */
+.lead {
+  font-size: var(--fs-2);
+  line-height: 1.55;
+  max-width: var(--measure);
+}
+
+/* Buttons --------------------------------------------------------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 3rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: var(--pill);
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: #fff;
+  font-weight: var(--w-bold);
+  font-size: var(--fs-1);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
+}
+
+/* The highlighter swipe: a marker stroke slides under the label on hover. */
+.btn::after {
+  content: '';
+  position: absolute;
+  left: 1.4rem;
+  right: 1.4rem;
+  bottom: 0.6rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--hl);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.btn:hover::after,
+.btn:focus-visible::after {
+  transform: scaleX(1);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn--ghost:hover {
+  background: rgba(35, 35, 35, 0.05);
+}
+
+.btn--paper {
+  background: var(--paper);
+  border-color: var(--paper);
+  color: var(--ink);
+}
+
+.btn--paper:hover {
+  background: #fff;
+}
+
+.on-slate .btn--ghost {
+  border-color: #fff;
+  color: #fff;
+}
+
+.on-slate .btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-2) var(--sp-3);
+}
+
+/* Inline "quiet" link row under a heading or at the end of a section */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  font-size: var(--fs-1);
+}
+
+/* Grids ----------------------------------------------------------- */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--sp-5) var(--sp-6);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-5) var(--sp-5);
+}
+
+@media (max-width: 56em) {
+  .grid-3 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 44em) {
+  .grid-2 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* Prose block: used on long-copy pages so headings keep rhythm ---- */
+.prose > * + * {
+  margin-top: var(--sp-2);
+}
+
+.prose > h2 {
+  margin-top: var(--sp-6);
+  font-size: var(--fs-4);
+  font-weight: var(--w-bold);
+}
+
+.prose > h3 {
+  margin-top: var(--sp-4);
+}
+
+.prose > p,
+.prose > ul,
+.prose > ol {
+  max-width: var(--measure);
+}
+
+/* Table wrapper so wide tables scroll on phones ------------------- */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Placeholder token: something to fill before launch -------------- */
+.tok {
+  background: var(--hl);
+  color: var(--ink);
+  padding: 0 0.12em;
+  border-radius: 3px;
+}
+
+/* Definition-style key/value pairs (rates, who does what) -------- */
+.kv {
+  display: grid;
+  grid-template-columns: minmax(10rem, 16rem) minmax(0, 1fr);
+  gap: 0.75rem var(--sp-4);
+  margin: 0;
+}
+
+.kv dt {
+  font-weight: var(--w-bold);
+  color: var(--fg-strong);
+}
+
+.kv dd {
+  margin: 0;
+}
+
+.kv > dt,
+.kv > dd {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (max-width: 40em) {
+  .kv {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .kv > dt {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+/* Numbered steps: only where the content is a real sequence ------- */
+.steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: step;
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.steps > li {
+  position: relative;
+  padding-left: 3.75rem;
+  margin: 0;
+}
+
+.steps > li::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: -0.15rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 2px solid var(--fg-strong);
+  color: var(--fg-strong);
+  font-weight: var(--w-bold);
+  font-size: var(--fs-2);
+}
+
+.steps h3 {
+  margin-bottom: 0.35rem;
+}
+
+/* Cards: deliberately rare. Two uses on the site. ----------------- */
+.panel {
+  background: var(--paper-2);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.on-slate .panel {
+  background: var(--slate-2);
+}

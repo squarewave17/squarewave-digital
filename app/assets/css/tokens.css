@@ -1,0 +1,99 @@
+/* ------------------------------------------------------------------
+   Squarewave Digital — design tokens
+   Source of truth for colour, type, space and motion.
+   ------------------------------------------------------------------ */
+
+:root {
+  /* Colour: paper, ink, and one highlighter pen. */
+  --paper: #fafafa;
+  --paper-2: #f1f1ee;
+  --ink: #232323;
+  --pencil: #404040;
+  --slate: #3c3c45;
+  --slate-2: #2e2e36;
+  --mist: #83828b;
+  --mist-2: #b9b9bf;
+  --line: #e3e3df;
+  --hl: #f3ff5a;
+  --hl-2: #e6f23b;
+
+  /* Semantic aliases. Dark bands flip these. */
+  --bg: var(--paper);
+  --fg: var(--pencil);
+  --fg-strong: var(--ink);
+  --fg-muted: var(--mist);
+  --rule: var(--line);
+
+  /* Type */
+  --font: 'Nunito Variable', 'Nunito', ui-rounded, 'Segoe UI', system-ui, sans-serif;
+  --fs-0: 0.875rem;
+  --fs-1: 1rem;
+  --fs-2: 1.125rem;
+  --fs-3: 1.375rem;
+  --fs-4: 1.75rem;
+  --fs-5: clamp(2rem, 1.3rem + 2.6vw, 3rem);
+  --fs-6: clamp(2.5rem, 1.6rem + 4.2vw, 4.75rem);
+  --lh-tight: 1.1;
+  --lh-snug: 1.3;
+  --lh-body: 1.6;
+  --w-light: 300;
+  --w-regular: 400;
+  --w-semi: 600;
+  --w-bold: 700;
+  --measure: 64ch;
+
+  /* Space (8px base) */
+  --sp-1: 0.5rem;
+  --sp-2: 1rem;
+  --sp-3: 1.5rem;
+  --sp-4: 2rem;
+  --sp-5: 3rem;
+  --sp-6: 4rem;
+  --sp-7: 6rem;
+  --sp-8: 8rem;
+  --section: clamp(4rem, 3rem + 5vw, 7.5rem);
+
+  /* Layout */
+  --wrap: 72rem;
+  --wrap-narrow: 46rem;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+
+  /* Shape */
+  --radius: 14px;
+  --radius-lg: 24px;
+  --pill: 999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 180ms;
+  --dur: 420ms;
+  --dur-slow: 700ms;
+
+  /* Menu */
+  --menu-w: clamp(20rem, 32vw, 30rem);
+  --page-scale: 0.78;
+  --page-shift: -30vw;
+
+  /* Elevation (used once: the shrunk page card) */
+  --shadow-page: 0 40px 120px -30px rgba(0, 0, 0, 0.55);
+}
+
+/* Dark band: the same tokens, flipped. */
+.on-slate {
+  --bg: var(--slate);
+  --fg: #e9e9ec;
+  --fg-strong: #ffffff;
+  --fg-muted: #b3b3bb;
+  --rule: #52525c;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+@media (max-width: 48em) {
+  :root {
+    --menu-w: 82vw;
+    --page-scale: 0.82;
+    --page-shift: -86vw;
+  }
+}

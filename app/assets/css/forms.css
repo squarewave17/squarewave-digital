@@ -1,0 +1,164 @@
+/* ------------------------------------------------------------------
+   Forms: the planner and the partner enquiry. Big targets, clear
+   labels, ink borders, highlighter focus.
+   ------------------------------------------------------------------ */
+
+.form {
+  display: grid;
+  gap: var(--sp-4);
+}
+
+.form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.form legend {
+  font-weight: var(--w-bold);
+  color: var(--fg-strong);
+  font-size: var(--fs-2);
+  padding: 0;
+  margin-bottom: var(--sp-1);
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field__label {
+  font-weight: var(--w-semi);
+  color: var(--fg-strong);
+}
+
+.field__hint {
+  font-size: var(--fs-0);
+  color: var(--fg-muted);
+}
+
+.field__req {
+  color: var(--fg-muted);
+  font-weight: var(--w-regular);
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  max-width: 34rem;
+  min-height: 3rem;
+  padding: 0.7rem 0.9rem;
+  border: 2px solid var(--ink);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: var(--fs-1);
+  transition: box-shadow var(--dur-fast) ease;
+}
+
+.textarea {
+  min-height: 9rem;
+  resize: vertical;
+}
+
+.select {
+  appearance: none;
+  padding-right: 2.5rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath d='M3 6l5 5 5-5' fill='none' stroke='%23232323' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+}
+
+.input:focus-visible,
+.textarea:focus-visible,
+.select:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--hl);
+}
+
+.input:user-invalid,
+.textarea:user-invalid {
+  border-color: #b23a3a;
+}
+
+.choices {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.choices--row {
+  grid-template-columns: repeat(auto-fit, minmax(10rem, max-content));
+  gap: 0.35rem var(--sp-3);
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+}
+
+.choice input {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: 0;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+
+.choice input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--hl);
+  border-radius: 4px;
+}
+
+.form__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-3);
+}
+
+.form__row .field {
+  flex: 1 1 10rem;
+}
+
+.form__error {
+  color: #8a1c1c;
+  font-weight: var(--w-semi);
+}
+
+/* Honeypot: off-screen, not in the tab order. Bots fill it, people never see it. */
+.hp {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* Confirmation state after submit */
+.done {
+  display: grid;
+  gap: var(--sp-2);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-radius: var(--radius-lg);
+  background: var(--paper-2);
+  max-width: 40rem;
+}
+
+.done h2 {
+  font-size: var(--fs-4);
+  font-weight: var(--w-bold);
+}
