@@ -1,0 +1,80 @@
+# Build the static site on every push to main and upload it to the
+# cPanel host over FTPS. The build runs on every push as a check; the
+# upload only runs once the repository variable DEPLOY_ENABLED is "true"
+# and the FTP secrets exist, so an un-configured repo never shows a red X.
+#
+# Secrets (Settings → Secrets and variables → Actions → Secrets):
+#   GURU_FTP_HOST      e.g. ftp.squarewavedigital.co.uk or the server hostname
+#   GURU_FTP_USER      the FTP account created in cPanel for deployment
+#   GURU_FTP_PASSWORD  its password
+# Variables (same page → Variables):
+#   DEPLOY_ENABLED     "true" to switch the upload on
+#   GURU_SERVER_DIR    where to put the files, ending in a slash:
+#                      "./" if the FTP account is scoped to the target folder,
+#                      otherwise e.g. "public_html/" or "public_html/staging/"
+
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run generate
+
+      - name: Check the output has what the host needs
+        run: |
+          test -f .output/public/index.html
+          test -f .output/public/404.html
+          test -f .output/public/.htaccess
+          test -f .output/public/sitemap.xml
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: .output/public/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: public/
+
+      - name: Upload over FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.GURU_FTP_HOST }}
+          username: ${{ secrets.GURU_FTP_USER }}
+          password: ${{ secrets.GURU_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: public/
+          server-dir: ${{ vars.GURU_SERVER_DIR }}
+          state-name: .ftp-deploy-sync-state.json
+          exclude: |
+            **/.git*
+            **/.git*/**
