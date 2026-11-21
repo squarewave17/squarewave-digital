@@ -104,7 +104,7 @@ const agencies = [
   },
   {
     q: 'What does it cost?',
-    a: [`${rates.day} a day for overflow, or blocks of ${rates.blockSize} days at ${rates.blockRate}. A fixed price per batch. ${rates.audit} for the audit. Numbers in full on [the agency page](/agencies#rates). Payment terms are ${rates.payment}; blocks are paid up front.`],
+    a: [`${rates.day} a day for overflow, or blocks of ${rates.blockSize} days at ${rates.blockRate}. That is an introductory rate for my first ${rates.partnerSlots} partner agencies, fixed for three months, against a standard ${rates.standardDay}. A fixed price per batch. ${rates.audit} for the audit. Numbers in full on [the agency page](/agencies#rates). Payment terms are ${rates.payment}; blocks are paid up front.`],
   },
   {
     q: 'Why not just hire a developer?',

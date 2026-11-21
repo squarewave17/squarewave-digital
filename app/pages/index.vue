@@ -9,7 +9,7 @@ useSeoMeta({
 
 // The four things an agency wants to know before reading a word of copy.
 const facts = [
-  { k: `${rates.day} a day`, v: `Published. Blocks of ${rates.blockSize} days at ${rates.blockRate}. You know what a day costs before we talk.` },
+  { k: `${rates.day} a day, introductory`, v: `For my first ${rates.partnerSlots} partner agencies, fixed for three months, against a standard rate of ${rates.standardDay}. Written into the agreement.` },
   { k: 'A pilot day first', v: 'One ticket, one day. If you would not book a second day, you do not pay for the first.' },
   { k: 'Overnight turnaround', v: `${contact.ukHours} kept free for calls and stand-ups. The rest of my day runs ahead of yours.` },
   { k: 'No poaching, in writing', v: 'A one-page partner agreement before any work starts. Your client stays your client.' },

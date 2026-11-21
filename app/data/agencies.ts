@@ -57,6 +57,7 @@ export const agencyOffers: ContentPage[] = [
       {
         heading: 'Rates',
         pairs: [
+          { term: 'Introductory rate', detail: rates.introNote },
           { term: 'Day rate', detail: `${rates.day} a day.` },
           { term: `Pre-paid block of ${rates.blockSize} days`, detail: `${rates.blockRate}, used within ${rates.blockValidity}.` },
           { term: 'Half days', detail: 'Fine for small tickets. I will not bill a day for an hour.' },

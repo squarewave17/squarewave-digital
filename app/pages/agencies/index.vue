@@ -142,6 +142,8 @@ const offers = [
           <h2>Rates</h2>
         </div>
         <dl class="kv kv--rates">
+          <dt>Introductory rate</dt>
+          <dd>{{ rates.introNote }}</dd>
           <dt>Pilot day</dt>
           <dd>{{ rates.day }}. {{ rates.pilot }}</dd>
           <dt>Overflow</dt>
@@ -154,8 +156,8 @@ const offers = [
           <dd>{{ rates.payment }}. I am one person; sixty-day terms are a loan I cannot offer.</dd>
         </dl>
         <p class="rates__note">
-          If the day rate looks low for the experience, that is on purpose. I run lean and remote, and I would rather be
-          booked solid at a fair rate than idle at a London one. It says nothing about how carefully the work is done.
+          Why so low: I would rather buy my first three agency relationships with a rate than with a pitch deck. The
+          pilot day means it costs you nothing to find out whether the work is worth the standard one.
         </p>
         <p class="rates__note">Prices exclude VAT where applicable. The <NuxtLink to="/terms#agencies">terms for agency work</NuxtLink> cover the rest.</p>
       </div>

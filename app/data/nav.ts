@@ -77,18 +77,23 @@ export const contact = {
 
 /**
  * Agency pricing. Published on purpose: agencies filter on rate and stack
- * before they read a word of copy, and a visible number keeps the
- * cheapest-body enquiries away.
+ * before they read a word of copy. The day rate is an introductory one and
+ * is explained wherever it appears, with the standard rate beside it as
+ * the anchor, so it reads as a founding offer rather than a cheap one.
  */
 export const rates = {
-  day: '£300',
+  day: '£100',
   blockSize: 'ten',
-  blockRate: '£270 a day',
+  blockRate: '£90 a day',
   blockValidity: 'three months',
-  audit: '£2,900',
+  audit: '£1,000',
   partnerSlots: 'three',
   slotsStatus: 'Taking on new partners now.',
   payment: '14 days from invoice',
+  /** The standard rate the introductory one is measured against. */
+  standardDay: '£300',
+  introNote:
+    'An introductory rate for my first three partner agencies, fixed for the first three months of each partnership and written into the agreement. The standard rate is £300 a day.',
   stacks: [
     'WordPress, including Oxygen and hand-built themes',
     'WooCommerce',
