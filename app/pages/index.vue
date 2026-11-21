@@ -228,7 +228,7 @@ const tools = [
           </p>
           <p>
             This site is the most recent thing I shipped: a Nuxt 4 static build, hand-made 3D paper doodles, no theme.
-            <a v-if="contact.github" :href="contact.github" rel="noopener">More code on GitHub.</a>
+            <a v-if="contact.siteRepo" :href="contact.siteRepo" rel="noopener">The code is on GitHub.</a>
           </p>
           <p class="studio__line">You deal with me. I deal with the work.</p>
           <p class="links">

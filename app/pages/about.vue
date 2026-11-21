@@ -161,7 +161,7 @@ useSeoMeta({
           There is no wall of logos here. I would rather say that than invent case studies, team photos, or results I
           cannot point to. This site is the most recent thing I shipped: a Nuxt 4 static build with hand-made 3D paper
           doodles and no theme underneath it, which tells you more about how I work than a testimonial I wrote myself.
-          <a v-if="contact.github" :href="contact.github" rel="noopener">My GitHub is public.</a>
+          <a v-if="contact.siteRepo" :href="contact.siteRepo" rel="noopener">The code is public.</a>
         </p>
         <p>
           For agencies, that is also why the first day is a pilot: one ticket, one day, my normal rate, and if you would

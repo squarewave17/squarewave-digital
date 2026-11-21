@@ -68,9 +68,11 @@ export const contact = {
   responseTime: 'one working day',
   callLength: '30 minutes',
 
-  /** Proof link. Empty it and the site hides every GitHub link. */
+  /** Proof links. Empty one and the site hides the links that use it. */
   github: 'https://github.com/squarewave17',
   githubUser: 'squarewave17',
+  /** This site's own repository. The home page and About point at it. */
+  siteRepo: 'https://github.com/squarewave17/squarewave-digital',
 }
 
 /**

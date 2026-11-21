@@ -1,0 +1,5 @@
+# Keep LF in the repository and the working copy, whatever the OS says.
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.mp4 binary
